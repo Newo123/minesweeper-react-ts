@@ -1,0 +1,67 @@
+.App {
+  border-width: 4px;
+  border-style: solid;
+  border-right-color: #999;
+  border-bottom-color: #999;
+  border-left-color: #fff;
+  border-top-color: #fff;
+  background: #c2c2c2;
+  padding: 16px;
+}
+
+.Header {
+  border-width: 4px;
+  border-style: solid;
+  border-right-color: #fff;
+  border-bottom-color: #fff;
+  border-left-color: #7b7b7b;
+  border-top-color: #7b7b7b;
+  background: #c0c0c0;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Body {
+  border-width: 4px;
+  border-style: solid;
+  border-right-color: #fff;
+  border-bottom-color: #fff;
+  border-left-color: #7b7b7b;
+  border-top-color: #7b7b7b;
+  margin-top: 16px;
+  border-width: 4px;
+  border-style: solid;
+  border-right-color: #fff;
+  border-bottom-color: #fff;
+  border-left-color: #7b7b7b;
+  border-top-color: #7b7b7b;
+  display: grid;
+  grid-template-rows: repeat(16, 1fr);
+  grid-template-columns: repeat(16, 1fr);
+}
+
+.Face {
+  border-width: 4px;
+  border-style: solid;
+  border-right-color: #7b7b7b;
+  border-bottom-color: #7b7b7b;
+  border-left-color: #fff;
+  border-top-color: #fff;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.Face:active {
+  border-right-color: #fff;
+  border-bottom-color: #fff;
+  border-left-color: #7b7b7b;
+  border-top-color: #7b7b7b;
+}
+
+/*# sourceMappingURL=App.css.map */

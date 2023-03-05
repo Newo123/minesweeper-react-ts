@@ -1,0 +1,24 @@
+.NumberDisplay {
+  width: 70px;
+  height: 48px;
+  background: black;
+  font-family: "DS Crystal", arial, serif;
+  font-weight: 500;
+  font-size: 48px;
+  color: #ff0701;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 999;
+}
+
+.NumberDisplay::before {
+  content: "888";
+  position: absolute;
+  z-index: -1;
+  color: #2e0402;
+  left: 2.5px;
+}
+
+/*# sourceMappingURL=NumberDisplay.css.map */
