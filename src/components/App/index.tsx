@@ -4,16 +4,17 @@ import {generateCells, openMultipleCells} from "../../utils";
 import Button from "../Button";
 import {Cell, CellState, CellValue, Face} from "../../types";
 import './App.scss'
-import {MAX_COLS, MAX_ROWS} from "../../constants";
+import {MAX_COLS, MAX_ROWS, NO_OF_BOMBS} from "../../constants";
 
 const App: FC = () => {
   const [cells, setCells] = useState<Cell[][]>(generateCells());
   const [face, setFace] = useState<Face>(Face.smile);
   const [time, setTime] = useState<number>(0)
   const [live, setLive] = useState<boolean>(false)
-  const [bombCounter, setBombCounter] = useState<number>(40)
+  const [bombCounter, setBombCounter] = useState<number>(NO_OF_BOMBS)
   const [hasLost, setHasLost] = useState<boolean>(false)
   const [hasWon, setHasWon] = useState<boolean>(false)
+  const [stateGame, setStateGame] = useState<boolean>(true)
 
 
   useEffect(() => {
@@ -25,8 +26,10 @@ const App: FC = () => {
       setFace(Face.smile)
     }
 
-    window.addEventListener('mousedown', hadleMouseDown)
-    window.addEventListener('mouseup', handleMouseUp)
+    if (!stateGame) {
+      window.addEventListener('mousedown', hadleMouseDown)
+      window.addEventListener('mouseup', handleMouseUp)
+    }
 
     return () => {
       window.removeEventListener('mousedown', hadleMouseDown)
@@ -58,12 +61,18 @@ const App: FC = () => {
     if (hasWon) {
       setLive(false)
       setFace(Face.won)
+      setStateGame(false)
     }
   }, [hasWon]);
   
 
 
   const handleCellClick = (rowParam: number, colParam: number) => (): void => {
+
+    if (!stateGame) {
+      return;
+    }
+
 
     let newCells = cells.slice()
     if (!live) {
@@ -90,6 +99,8 @@ const App: FC = () => {
       newCells[rowParam][colParam].red = true
       newCells = showAllBombs()
       setCells(newCells)
+      setLive(false)
+      setStateGame(false)
       return;
     } else if (currentCell.value === CellValue.none) {
       newCells = openMultipleCells(newCells, rowParam, colParam)
@@ -160,6 +171,8 @@ const App: FC = () => {
     setBombCounter(40)
     setHasLost(false)
     setHasWon(false)
+    setStateGame(true)
+    setFace(Face.smile)
   }
 
   const renderCells = (): React.ReactNode => {
