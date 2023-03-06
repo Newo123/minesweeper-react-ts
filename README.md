@@ -6,7 +6,7 @@ npm install
 # run dev mode
 npm run dev
 
-#run build mode
+# run build mode
 npm run build
 
 
